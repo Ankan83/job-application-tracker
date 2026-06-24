@@ -1,0 +1,89 @@
+.edit-job-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.edit-job-form input,
+.edit-job-form select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.edit-job-form button {
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.edit-job-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.edit-job-form input,
+.edit-job-form select {
+  padding: 12px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+
+  font-size: 15px;
+  outline: none;
+
+  transition: all 0.2s ease;
+}
+
+.edit-job-form input:focus,
+.edit-job-form select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.form-actions button {
+  flex: 1;
+  border: none;
+  border-radius: 10px;
+
+  padding: 12px;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.form-actions button[type="submit"] {
+  background: #2563eb;
+  color: white;
+}
+
+.form-actions button[type="submit"]:hover {
+  background: #1d4ed8;
+}
+
+.form-actions button[type="button"] {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.form-actions button[type="button"]:hover {
+  background: #d1d5db;
+}
+
+@media (max-width: 500px) {
+  .modal-content {
+    padding: 20px;
+    max-width: 95%;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+}
