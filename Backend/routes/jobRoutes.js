@@ -10,7 +10,7 @@ const {
   getJobsStats,
 } = require("../controllers/jobControllers");
 
-const protect = require("..authMiddleware");
+const protect  = require("../middleware/authmiddleware");
 
 router.route("/").post(protect, createJob).get(protect, getJobs);
 
