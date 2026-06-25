@@ -106,8 +106,7 @@ function Dashboard() {
   if (loading) {
     return (
       <div className="loading-container">
-        <ClipLoader size={50} />
-        <h2>Loading Applications...</h2>
+        <p className="loading-text">Loading Applications...</p>
       </div>
     );
   }
