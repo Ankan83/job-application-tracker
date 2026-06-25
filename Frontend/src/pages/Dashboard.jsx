@@ -5,7 +5,7 @@ import EditJobForm from "../components/EditJobForm";
 import { getJobsStats } from "../services/JobService";
 import JobStatusChart from "../components/JobStatusChart";
 import { toast } from "react-toastify";
-import { ClipLoader } from "react-spinners";
+import ClipLoader from "react-spinners";
 import { saveAs } from "file-saver";
 import { useNavigate } from "react-router-dom";
 
@@ -44,7 +44,7 @@ function Dashboard() {
       const statsData = await getJobsStats();
       setStats(statsData);
       const data = await getJobs();
-      
+
       setJobs(data);
     } catch (error) {
       console.error(error);
