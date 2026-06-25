@@ -3,12 +3,14 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import ClipLoader from "react-spinners/ClipLoader";
 import "../styles/pages/Auth.css";
 
 function Login() {
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
   const [formData, setFormData] = useState({
@@ -53,25 +55,25 @@ function Login() {
     }
 
     try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/auth/login`,
-        formData,
-      );
+  setLoading(true);
 
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("user", JSON.stringify(res.data.user));
+  const res = await axios.post(
+    `${import.meta.env.VITE_API_URL}/auth/login`,
+    formData,
+  );
 
-      toast.success("Login Successful!");
+  localStorage.setItem("token", res.data.token);
+  localStorage.setItem("user", JSON.stringify(res.data.user));
 
-      setTimeout(() => {
-        navigate("/dashboard");
-      }, 1000);
-    } catch (error) {
-      console.log(error.response?.data);
+  toast.success("Login Successful!");
+  navigate("/dashboard");
+} catch (error) {
+  console.log(error.response?.data);
 
-      toast.error(error.response?.data?.message || "Login Failed!");
-    }
-  };
+  toast.error(error.response?.data?.message || "Login Failed!");
+} finally {
+  setLoading(false);
+}
 
   return (
     <div className="auth-container">
@@ -125,15 +127,26 @@ function Login() {
             </div>
           </div>
 
-          <button type="submit" className="auth-btn">
-            Login
+          <button
+            type="submit"
+            className="auth-btn"
+            disabled={loading}
+        >
+           {loading ? (
+            <>
+            <ClipLoader size={18} color="#fff" />
+            <span style={{ marginLeft: "8px" }}>Logging in...</span>
+            </>
+          ) : (
+            "Login"
+            )}
           </button>
-        </form>
-        <div className="auth-footer">
-          <p>
-            Don't have an account?{" "}
-            <Link to="/register" className="auth-link">
-              Register Here
+            </form>
+            <div className="auth-footer">
+              <p>
+                Don't have an account?{" "}
+                <Link to="/register" className="auth-link">
+                  Register Here
             </Link>
           </p>
         </div>

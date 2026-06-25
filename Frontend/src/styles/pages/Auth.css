@@ -88,6 +88,11 @@
   background: #1d4ed8;
 }
 
+.auth-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
 .auth-footer {
   margin-top: 25px;
   text-align: center;
