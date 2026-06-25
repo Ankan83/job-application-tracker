@@ -27,27 +27,27 @@ API.interceptors.response.use(
 );
 
 export const getJobs = async () => {
-  const response = await API.get("/");
+  const response = await API.get("/jobs");
   return response.data;
 };
 
 export const createJob = async (jobData) => {
-  const response = await API.post("/", jobData);
+  const response = await API.post("/jobs", jobData);
   return response.data;
 };
 
 export const updateJob = async (id, jobData) => {
-  const response = await API.put(`/${id}`, jobData);
+  const response = await API.put(`/jobs/${id}`, jobData);
   return response.data;
 };
 
 export const deleteJob = async (id) => {
-  const response = await API.delete(`/${id}`);
+  const response = await API.delete(`/jobs/${id}`);
   return response.data;
 };
 
 export const getJobsStats = async () => {
-  const response = await API.get("/stats");
+  const response = await API.get("/jobs/stats");
 
   return response.data;
 };
