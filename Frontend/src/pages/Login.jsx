@@ -55,26 +55,26 @@ function Login() {
     }
 
     try {
-  setLoading(true);
+      setLoading(true);
 
-  const res = await axios.post(
-    `${import.meta.env.VITE_API_URL}/auth/login`,
-    formData,
-  );
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/auth/login`,
+        formData,
+      );
 
-  localStorage.setItem("token", res.data.token);
-  localStorage.setItem("user", JSON.stringify(res.data.user));
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
 
-  toast.success("Login Successful!");
-  navigate("/dashboard");
-} catch (error) {
-  console.log(error.response?.data);
+      toast.success("Login Successful!");
+      navigate("/dashboard");
+    } catch (error) {
+      console.log(error.response?.data);
 
-  toast.error(error.response?.data?.message || "Login Failed!");
-} finally {
-  setLoading(false);
-}
-
+      toast.error(error.response?.data?.message || "Login Failed!");
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className="auth-container">
       <div className="auth-card">
@@ -127,26 +127,22 @@ function Login() {
             </div>
           </div>
 
-          <button
-            type="submit"
-            className="auth-btn"
-            disabled={loading}
-        >
-           {loading ? (
-            <>
-            <ClipLoader size={18} color="#fff" />
-            <span style={{ marginLeft: "8px" }}>Logging in...</span>
-            </>
-          ) : (
-            "Login"
+          <button type="submit" className="auth-btn" disabled={loading}>
+            {loading ? (
+              <>
+                <ClipLoader size={18} color="#fff" />
+                <span style={{ marginLeft: "8px" }}>Logging in...</span>
+              </>
+            ) : (
+              "Login"
             )}
           </button>
-            </form>
-            <div className="auth-footer">
-              <p>
-                Don't have an account?{" "}
-                <Link to="/register" className="auth-link">
-                  Register Here
+        </form>
+        <div className="auth-footer">
+          <p>
+            Don't have an account?{" "}
+            <Link to="/register" className="auth-link">
+              Register Here
             </Link>
           </p>
         </div>
