@@ -5,7 +5,7 @@ import EditJobForm from "../components/EditJobForm";
 import { getJobsStats } from "../services/JobService";
 import JobStatusChart from "../components/JobStatusChart";
 import { toast } from "react-toastify";
-import ClipLoader from "react-spinners";
+import ClipLoader from "react-spinners/ClipLoader";
 import { saveAs } from "file-saver";
 import { useNavigate } from "react-router-dom";
 
