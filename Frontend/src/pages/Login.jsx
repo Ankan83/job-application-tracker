@@ -3,14 +3,13 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import ClipLoader from "react-spinners/ClipLoader";
 import "../styles/pages/Auth.css";
 
 function Login() {
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
+
   const [errors, setErrors] = useState({});
 
   const [formData, setFormData] = useState({
@@ -55,8 +54,6 @@ function Login() {
     }
 
     try {
-      setLoading(true);
-
       const res = await axios.post(
         `${import.meta.env.VITE_API_URL}/auth/login`,
         formData,
@@ -71,8 +68,6 @@ function Login() {
       console.log(error.response?.data);
 
       toast.error(error.response?.data?.message || "Login Failed!");
-    } finally {
-      setLoading(false);
     }
   };
   return (
@@ -127,15 +122,8 @@ function Login() {
             </div>
           </div>
 
-          <button type="submit" className="auth-btn" disabled={loading}>
-            {loading ? (
-              <>
-                <ClipLoader size={18} color="#fff" />
-                <span style={{ marginLeft: "8px" }}>Logging in...</span>
-              </>
-            ) : (
-              "Login"
-            )}
+          <button type="submit" className="auth-btn">
+            Login
           </button>
         </form>
         <div className="auth-footer">
